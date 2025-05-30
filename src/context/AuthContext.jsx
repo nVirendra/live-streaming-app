@@ -28,10 +28,12 @@ function authReducer(state, action) {
 export function AuthProvider({ children }) {
   const [state, dispatch] = useReducer(authReducer, initialState);
 
+  // Compute isAuthenticated based on user state
+  const isAuthenticated = !!state.user;
+
   useEffect(() => {
     const initAuth = async () => {
       const token = getToken();
-      console.log('this is',token);
       if (token) {
         try {
           const user = await authAPI.getCurrentUser();
@@ -100,10 +102,12 @@ export function AuthProvider({ children }) {
   return (
     <AuthContext.Provider value={{
       ...state,
+      isAuthenticated, // Add this line
       login,
       register,
       logout,
-      updateUser
+      updateUser,
+      dispatch
     }}>
       {children}
     </AuthContext.Provider>

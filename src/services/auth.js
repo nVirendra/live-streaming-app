@@ -35,7 +35,7 @@ class AuthService {
         rememberMe: credentials.rememberMe || false
       });
 
-      const { user, token, refreshToken } = response.data;
+      const { user, token, refreshToken } = response;
 
       // Store tokens and user data
       setToken(token);
@@ -79,7 +79,7 @@ class AuthService {
         acceptTerms: userData.acceptTerms || false
       });
 
-      const { user, token, refreshToken } = response.data;
+      const { user, token, refreshToken } = response;
 
       // Store tokens and user data
       setToken(token);

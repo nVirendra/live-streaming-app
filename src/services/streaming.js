@@ -12,8 +12,8 @@ export const streamingAPI = {
   },
 
   // Get specific stream
-  getStream: async (streamId) => {
-    return await api.get(`/streams/${streamId}`);
+  getStreams: async () => {
+    return await api.get(`/streams`);
   },
 
   // Create new stream

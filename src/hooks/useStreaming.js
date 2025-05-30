@@ -35,8 +35,8 @@ export const useStreaming = () => {
   const fetchStreams = async () => {
     try {
       setLoading(true);
-      const response = await streamingService.getStreams();
-      setStreams(response.data);
+      const response = await streamingAPI.getStreams();
+      setStreams(response.streams);
     } catch (error) {
       console.error('Failed to fetch streams:', error);
     } finally {
@@ -46,7 +46,7 @@ export const useStreaming = () => {
 
   const startStream = async (streamData) => {
     try {
-      const response = await streamingService.startStream(streamData);
+      const response = await streamingAPI.createStream(streamData);
       setCurrentStream(response.data);
       return response.data;
     } catch (error) {
@@ -56,7 +56,7 @@ export const useStreaming = () => {
 
   const endStream = async (streamId) => {
     try {
-      await streamingService.endStream(streamId);
+      await streamingAPI.deleteStream(streamId);
       setCurrentStream(null);
     } catch (error) {
       throw error;

@@ -2,7 +2,7 @@
  * Token management utilities
  */
 
-const TOKEN_KEY = 'auth_token';
+const TOKEN_KEY = 'token';
 const USER_KEY = 'user_data';
 const REFRESH_TOKEN_KEY = 'refresh_token';
 

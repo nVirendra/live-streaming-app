@@ -7,24 +7,34 @@ import Home from './pages/Home';
  import Login from './pages/Login';
 import Register from './pages/Register';
 // import StreamView from './pages/StreamView';
-// import Broadcast from './pages/Broadcast';
+import Broadcast from './pages/Broadcast';
 // import Profile from './pages/Profile';
-// import ProtectedRoute from './components/auth/ProtectedRoute';
+import ProtectedRoute from './components/auth/ProtectedRoute';
 
 function App() {
   return (
     <AuthProvider>
-       {/* <SocketProvider> */}
+       <SocketProvider>
         <Router>
           <div className="min-h-screen bg-gray-50">
             <Header />
             <main>
               <Routes>
-                {/* <Route path="/" element={<Home />} />
-                <Route path="/login" element={<Login />} /> */}
+                <Route path="/" element={<Home />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
-                {/* <Route path="/stream/:id" element={<StreamView />} /> */}
+
+                <Route path="/register" element={<Register />} />
+                 <Route 
+                  path="/broadcast" 
+                  element={
+                    <ProtectedRoute>
+                      <Broadcast />
+                    </ProtectedRoute>
+                  } 
+                />
+
+                 {/* <Route path="/stream/:id" element={<StreamView />} /> */} 
                 {/* <Route 
                   path="/broadcast" 
                   element={
@@ -45,7 +55,7 @@ function App() {
             </main>
           </div>
         </Router>
-     {/* </SocketProvider> */}
+    </SocketProvider> 
      </AuthProvider>
   );
 }
